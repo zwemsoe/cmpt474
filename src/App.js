@@ -10,7 +10,26 @@ import {
   Card,
 } from "@aws-amplify/ui-react";
 
+import { get } from "aws-amplify/api";
+import { useEffect } from "react";
+
 function App({ signOut }) {
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const restOperation = get({
+          apiName: "questionsApi",
+          path: "/questions",
+        });
+        const { body } = await restOperation.response;
+        const response = await body.json();
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  });
   return (
     <View className='App'>
       <Card>

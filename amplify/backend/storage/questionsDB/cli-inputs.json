@@ -1,0 +1,10 @@
+{
+  "resourceName": "questionsDB",
+  "tableName": "questionsTable",
+  "partitionKey": {
+    "fieldName": "questionId",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
