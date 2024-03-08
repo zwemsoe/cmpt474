@@ -1,17 +1,16 @@
-import logo from "./logo.svg";
 import "./App.css";
 import "@aws-amplify/ui-react/styles.css";
 import {
-  withAuthenticator,
   Button,
-  Heading,
-  Image,
   View,
-  Card,
+  withAuthenticator,
 } from "@aws-amplify/ui-react";
-
 import { get } from "aws-amplify/api";
 import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Contribute from './Contribute';
+import Questions from "./Questions";
+import Header from "./Header";
 
 function App({ signOut }) {
   useEffect(() => {
@@ -31,13 +30,18 @@ function App({ signOut }) {
     fetchData();
   });
   return (
-    <View className='App'>
-      <Card>
-        <Image src={logo} className='App-logo' alt='logo' />
-        <Heading level={1}>We now have Auth!</Heading>
-      </Card>
-      <Button onClick={signOut}>Sign Out</Button>
-    </View>
+    <Router>
+      <Routes>
+        <Route path="/" element={(
+          <View className="App">
+            <Header />
+            <Button onClick={signOut}>Sign Out</Button>
+          </View>
+        )} />
+        <Route path="/contribute" element={<Contribute />} />
+        <Route path="/questions" element={<Questions />} />
+      </Routes>
+    </Router>
   );
 }
 
