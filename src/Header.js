@@ -8,12 +8,9 @@ const Header = () => {
       </div>
       <div style={middleContainer}>
         <nav style={navStyle}>
-          <ul style={ulStyle}>
-            <li></li>
-            <li><a href="/">Home</a></li>
-            <li><a href="/questions">Questions</a></li>
-            <li><a href="/contribute">Contribute</a></li>
-          </ul>
+          <a href="/" style={linkStyle}>Home</a>
+          <a href="/questions" style={linkStyle}>Questions</a>
+          <a href="/contribute" style={linkStyle}>Contribute</a>
         </nav>
       </div>
       <div style={rightContainer}>
@@ -36,6 +33,9 @@ const headerStyle = {
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: '10px',
+  position: 'fixed', 
+  top: '0', 
+  width: '100%',
 };
 
 const leftContainer = {
@@ -48,7 +48,6 @@ const middleContainer = {
 
 const rightContainer = {
   flex: '1',
-  textAlign: 'right',
 };
 
 const logoStyle = {
@@ -56,13 +55,14 @@ const logoStyle = {
 };
 
 const navStyle = {
-  display: 'inline-block',
+  display: 'flex',
+  justifyContent: 'space-evenly',
 };
 
-const ulStyle = {
-  listStyleType: 'none',
-  padding: '0',
-  margin: '0',
+const linkStyle = {
+  textDecoration: 'none',
+  fontSize: '18px',
+  color: '#003366',
 };
 
 const userInfoStyle = {
