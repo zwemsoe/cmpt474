@@ -1,0 +1,8 @@
+.switch-on .awsswitch-inner {
+      background-color: green;
+  }
+  
+  .switch-off .awsswitch-inner {
+      background-color: red;
+  }
+  

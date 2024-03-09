@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Contribute from './Contribute';
 import Questions from "./Questions";
 import Header from "./Header";
+import Footer from "./Footer";
 
 function App({ signOut }) {
   useEffect(() => {
@@ -33,9 +34,10 @@ function App({ signOut }) {
     <Router>
       <Routes>
         <Route path="/" element={(
-          <View className="App">
+            <View className="App" style={{ minHeight: '100vh', paddingBottom: '50px', boxSizing: 'border-box', paddingTop: '100px' }}>
             <Header />
             <Button onClick={signOut}>Sign Out</Button>
+            <Footer />
           </View>
         )} />
         <Route path="/contribute" element={<Contribute />} />
