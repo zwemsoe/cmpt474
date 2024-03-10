@@ -1,15 +1,12 @@
 import "./App.css";
 import "@aws-amplify/ui-react/styles.css";
-import {
-  Button,
-  View,
-  withAuthenticator,
-} from "@aws-amplify/ui-react";
+import { Button, View, withAuthenticator } from "@aws-amplify/ui-react";
 import { get } from "aws-amplify/api";
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Contribute from './Contribute';
+import Contribute from "./Contribute";
 import Questions from "./Questions";
+import Users from "./Users";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -33,15 +30,27 @@ function App({ signOut }) {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={(
-            <View className="App" style={{ minHeight: '100vh', paddingBottom: '50px', boxSizing: 'border-box', paddingTop: '100px' }}>
-            <Header />
-            <Button onClick={signOut}>Sign Out</Button>
-            <Footer />
-          </View>
-        )} />
+        <Route
+          path="/"
+          element={
+            <View
+              className="App"
+              style={{
+                minHeight: "100vh",
+                paddingBottom: "50px",
+                boxSizing: "border-box",
+                paddingTop: "100px",
+              }}
+            >
+              <Header />
+              <Button onClick={signOut}>Sign Out</Button>
+              <Footer />
+            </View>
+          }
+        />
         <Route path="/contribute" element={<Contribute />} />
         <Route path="/questions" element={<Questions />} />
+        <Route path="/users" element={<Users />} />
       </Routes>
     </Router>
   );

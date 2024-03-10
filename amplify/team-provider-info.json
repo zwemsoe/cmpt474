@@ -61,5 +61,43 @@
         "questionsDB": {}
       }
     }
+  },
+  "cmpt": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cmpt474-cmpt-202840-authRole",
+      "UnauthRoleArn": "arn:aws:iam::576274517412:role/amplify-cmpt474-cmpt-202840-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::576274517412:role/amplify-cmpt474-cmpt-202840-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-cmpt474-cmpt-202840-deployment",
+      "UnauthRoleName": "amplify-cmpt474-cmpt-202840-unauthRole",
+      "StackName": "amplify-cmpt474-cmpt-202840",
+      "StackId": "arn:aws:cloudformation:us-east-1:576274517412:stack/amplify-cmpt474-cmpt-202840/ad2e2fd0-de96-11ee-8cf3-0e468fa9d1fd",
+      "AmplifyAppId": "dme7cphogwyim",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-cmpt474-cmpt-202840-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "auth": {
+        "cmpt47469df6069": {}
+      },
+      "function": {
+        "questionsLambda": {
+          "deploymentBucketName": "amplify-cmpt474-cmpt-202840-deployment",
+          "s3Key": "amplify-builds/questionsLambda-453659416e2b2f624679-build.zip"
+        },
+        "questionsDB": {},
+        "usersLambda": {
+          "deploymentBucketName": "amplify-cmpt474-cmpt-202840-deployment",
+          "s3Key": "amplify-builds/usersLambda-386d42346d734969302f-build.zip"
+        }
+      },
+      "api": {
+        "questionsApi": {},
+        "users": {}
+      },
+      "storage": {
+        "questionsDB": {},
+        "usersDB": {}
+      }
+    }
   }
 }

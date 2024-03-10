@@ -13,6 +13,20 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "API Gateway"
+    },
+    "users": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "usersLambda"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
     }
   },
   "auth": {
@@ -62,6 +76,25 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "usersLambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "usersDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
@@ -80,10 +113,30 @@
           "resourceName": "questionsLambda"
         }
       ]
+    },
+    "AMPLIFY_function_usersLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "usersLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_usersLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "usersLambda"
+        }
+      ]
     }
   },
   "storage": {
     "questionsDB": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "usersDB": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     }
