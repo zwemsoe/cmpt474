@@ -13,12 +13,36 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "API Gateway"
+    },
+    "usersApi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "usersLambda"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
     }
   },
   "auth": {
     "cmpt47469df6069": {
       "customAuth": false,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "cmpt47469df6069PostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
         "mfaTypes": [
@@ -44,6 +68,11 @@
     }
   },
   "function": {
+    "cmpt47469df6069PostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "questionsLambda": {
       "build": true,
       "dependsOn": [
@@ -62,9 +91,44 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "usersLambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "usersDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
+    "AMPLIFY_function_cmpt47469df6069PostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "cmpt47469df6069PostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_cmpt47469df6069PostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "cmpt47469df6069PostConfirmation"
+        }
+      ]
+    },
     "AMPLIFY_function_questionsLambda_deploymentBucketName": {
       "usedBy": [
         {
@@ -80,10 +144,30 @@
           "resourceName": "questionsLambda"
         }
       ]
+    },
+    "AMPLIFY_function_usersLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "usersLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_usersLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "usersLambda"
+        }
+      ]
     }
   },
   "storage": {
     "questionsDB": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "usersDB": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     }
