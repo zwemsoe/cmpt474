@@ -4,6 +4,7 @@ import { Button, View, withAuthenticator } from "@aws-amplify/ui-react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ContributePage from "./ContributePage";
 import QuestionsPage from "./QuestionsPage";
+import Users from "./Users";
 import Header from "./Header";
 import Footer from "./Footer";
 import QuestionPage from "./QuestionPage";
@@ -33,6 +34,7 @@ function App({ signOut }) {
         <Route path="/contribute" element={<ContributePage />} />
         <Route path="/questions" element={<QuestionsPage />} />
         <Route path="/question/:questionId" element={<QuestionPage />} />
+        <Route path="/users" element={<Users />} />
       </Routes>
     </Router>
   );
