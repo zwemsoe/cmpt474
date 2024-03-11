@@ -13,6 +13,9 @@
     },
     "questionsApi": {
       "Type": "String"
+    },
+    "usersApi": {
+      "Type": "String"
     }
   },
   "Conditions": {
