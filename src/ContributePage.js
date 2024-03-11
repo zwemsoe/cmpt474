@@ -11,7 +11,7 @@ import {
   Alert,
   Loader,
 } from "@aws-amplify/ui-react";
-import { post } from "aws-amplify/api";
+import { post, get } from "aws-amplify/api";
 import "./Contribute.css";
 import Footer from "./Footer";
 
@@ -22,9 +22,62 @@ const ContributePage = () => {
   const [selectedTag, setSelectedTag] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [options, setOptions] = useState(["Choose a topic"]);
+  const [isTextFieldVisible, setTextFieldVisible] = useState(false);
+  const [textValue, setTextValue] = useState("");
 
   const handleToggle = () => {
     setToggled(!toggled);
+  };
+
+  const toggleTextFieldVisibility = () => {
+    setTextFieldVisible(!isTextFieldVisible);
+  };
+
+  const saveText = (text) => {
+    // Save the text here
+    saveTopic(text);
+    console.log("Text saved:", text);
+    setTextFieldVisible(false);
+  };
+
+  async function getTopics() {
+    try {
+      const restOperation = get({
+        apiName: "questionsApi",
+        path: "/topics",
+      });
+      const { body } = await restOperation.response;
+      const result = [];
+      const response = await body.json();
+      response.forEach(element => {
+        result.push(element['topicName']);
+      });
+      setOptions(result);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
+  }
+  getTopics();
+  const saveTopic = async (text) => {
+    try {
+      const restOperation = post({
+        apiName: "questionsApi",
+        path: "/topics",
+        options: {
+          body: {
+            topicsId: crypto.randomUUID(),
+            topicName: text,
+          },
+        },
+      });
+      const { body } = await restOperation.response;
+      await body.json();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleSubmit = async (event) => {
@@ -40,6 +93,7 @@ const ContributePage = () => {
             title: questionTitle,
             question: questionContent,
             answer: toggled,
+            topic: selectedTag
           },
         },
       });
@@ -89,12 +143,32 @@ const ContributePage = () => {
             <SelectField
               label='Topic'
               onChange={(event) => setSelectedTag(event.target.value)}
+              options={options}
               value={selectedTag}
             >
-              <option value=''>Choose a topic</option>
-              <option value='CMPT 474'>CMPT 474</option>
-              <option value='CompSci'>CompSci</option>
             </SelectField>
+            <form>
+              <Flex>
+                <Button
+                  onClick={toggleTextFieldVisibility}
+                  variation='primary'
+                  style={{ marginBottom: "30px" }}
+                >
+                  Create topics
+                </Button>
+                {isTextFieldVisible &&
+                  <> 
+                  <input
+                  type="text"
+                  value={textValue}
+                  onChange={(e) => setTextValue(e.target.value)}
+                  />
+                  <button onClick={() => saveText(textValue)}>Save</button>
+                  <button onClick={() => setTextValue("")}>Clear</button>
+                  </>
+                }
+              </Flex>
+            </form>
             <div
               style={{
                 border: "1px solid #ccc",

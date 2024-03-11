@@ -11,13 +11,11 @@ import {
 import Header from "./Header";
 import Footer from "./Footer";
 import { get } from "aws-amplify/api";
-import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const QuestionsPage = () => {
   const navigate = useNavigate();
-  let { topicName } = useParams();
-  const [questions, setQuestions] = useState([]);
+  const [topics, setTopics] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,21 +23,19 @@ const QuestionsPage = () => {
       try {
         const restOperation = get({
           apiName: "questionsApi",
-          path: "/questions",
+          path: "/topics",
         });
         const { body } = await restOperation.response;
         const response = await body.json();
-        console.log(topicName);
-        setQuestions(response.filter(item => item['topic'] === topicName));
+        setTopics(response);
         setLoading(false);
       } catch (error) {
         console.error(error);
         setLoading(false);
       }
     }
-    if(topicName)
-      fetchData();
-  }, [topicName]);
+    fetchData();
+  });
 
   return (
     <View
@@ -53,19 +49,17 @@ const QuestionsPage = () => {
     >
       <Header />
       <div style={{ maxWidth: "500px", margin: "auto" }}>
-        <h2>Questions</h2>
-        <p>List of Questions here:</p>
+        <h2>Topics</h2>
+        <p>Choose from list of topics</p>
         {loading && <Loader variation='linear' />}
         <Flex direction='column' gap='1rem'>
-          {questions.map(({ questionId, title, question }) => {
+          {topics.map(({ topicId, topicName }) => {
             return (
-              <Card key={questionId} variation='elevated'>
+              <Card key={topicId} variation='elevated'>
                 <Flex direction='column' gap='1rem'>
                   <Heading>{topicName}</Heading>
-                  <Heading>{title}</Heading>
-                  <Text>{question}</Text>
-                  <Button onClick={() => navigate(`/question/${questionId}`)}>
-                    Attempt this question
+                  <Button onClick={() => navigate(`/questions/${topicName}`)}>
+                    Select
                   </Button>
                 </Flex>
               </Card>

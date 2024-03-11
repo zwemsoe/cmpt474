@@ -9,7 +9,7 @@ const Header = () => {
       <div style={middleContainer}>
         <nav style={navStyle}>
           <a href="/" style={linkStyle}>Home</a>
-          <a href="/questions" style={linkStyle}>Questions</a>
+          <a href="/topic" style={linkStyle}>Questions</a>
           <a href="/contribute" style={linkStyle}>Contribute</a>
         </nav>
       </div>
