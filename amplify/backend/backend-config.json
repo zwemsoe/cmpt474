@@ -100,25 +100,6 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "usersLambda": {
-      "build": true,
-      "dependsOn": [
-        {
-          "attributeEnvMap": {
-            "Arn": "TABLE_ARN",
-            "Name": "TABLE_NAME"
-          },
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "storage",
-          "resourceName": "usersDB"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "topicLambda": {
       "build": true,
       "dependsOn": [
@@ -149,6 +130,25 @@
           ],
           "category": "storage",
           "resourceName": "topicsTable"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "usersLambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "usersDB"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -188,22 +188,6 @@
         }
       ]
     },
-    "AMPLIFY_function_usersLambda_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "usersLambda"
-        }
-      ]
-    },
-    "AMPLIFY_function_usersLambda_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "usersLambda"
-        }
-      ]
-    },
     "AMPLIFY_function_topicLambda_deploymentBucketName": {
       "usedBy": [
         {
@@ -235,6 +219,22 @@
           "resourceName": "topicsTableTrigger3a854fee"
         }
       ]
+    },
+    "AMPLIFY_function_usersLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "usersLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_usersLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "usersLambda"
+        }
+      ]
     }
   },
   "storage": {
@@ -242,11 +242,11 @@
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     },
-    "usersDB": {
+    "topicsTable": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     },
-    "topicsTable": {
+    "usersDB": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     }

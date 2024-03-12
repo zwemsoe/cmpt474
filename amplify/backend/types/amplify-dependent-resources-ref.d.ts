@@ -37,13 +37,6 @@ export type AmplifyDependentResourcesAttributes = {
       "Name": "string",
       "Region": "string"
     },
-    "usersLambda": {
-      "Arn": "string",
-      "LambdaExecutionRole": "string",
-      "LambdaExecutionRoleArn": "string",
-      "Name": "string",
-      "Region": "string"
-    },
     "topicLambda": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
@@ -52,6 +45,13 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string"
     },
     "topicsTableTrigger3a854fee": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "usersLambda": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
@@ -68,7 +68,7 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string",
       "StreamArn": "string"
     },
-    "usersDB": {
+    "topicsTable": {
       "Arn": "string",
       "Name": "string",
       "PartitionKeyName": "string",
@@ -76,7 +76,7 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string",
       "StreamArn": "string"
     },
-    "topicsTable": {
+    "usersDB": {
       "Arn": "string",
       "Name": "string",
       "PartitionKeyName": "string",

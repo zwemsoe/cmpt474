@@ -50,7 +50,8 @@
       "StackName": "amplify-amplify2ee84313dfd74-staging-35808",
       "StackId": "arn:aws:cloudformation:us-east-2:342579367446:stack/amplify-amplify2ee84313dfd74-staging-35808/1324a050-dd00-11ee-9f52-02e50ebe92a7",
       "AmplifyAppId": "d20l28jzw4qfix",
-      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-amplify2ee84313dfd74-staging-35808-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-amplify2ee84313dfd74-staging-35808-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-amplify2ee84313dfd74-staging-35808-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
@@ -59,11 +60,29 @@
       "function": {
         "questionsLambda": {
           "deploymentBucketName": "amplify-amplify2ee84313dfd74-staging-35808-deployment",
-          "s3Key": "amplify-builds/questionsLambda-453659416e2b2f624679-build.zip"
+          "s3Key": "amplify-builds/questionsLambda-4a6d70736b386d584b4a-build.zip"
+        },
+        "cmpt47469df6069PostConfirmation": {
+          "deploymentBucketName": "amplify-amplify2ee84313dfd74-staging-35808-deployment",
+          "s3Key": "amplify-builds/cmpt47469df6069PostConfirmation-2b584c3639662b766558-build.zip"
+        },
+        "topicLambda": {
+          "deploymentBucketName": "amplify-amplify2ee84313dfd74-staging-35808-deployment",
+          "s3Key": "amplify-builds/topicLambda-394c666f4c6f54304664-build.zip"
+        },
+        "topicsTableTrigger3a854fee": {
+          "deploymentBucketName": "amplify-amplify2ee84313dfd74-staging-35808-deployment",
+          "s3Key": "amplify-builds/topicsTableTrigger3a854fee-532f734547686f775a63-build.zip"
+        },
+        "usersLambda": {
+          "deploymentBucketName": "amplify-amplify2ee84313dfd74-staging-35808-deployment",
+          "s3Key": "amplify-builds/usersLambda-325a58562b4533766552-build.zip"
         }
       },
       "storage": {
-        "questionsDB": {}
+        "questionsDB": {},
+        "topicsTable": {},
+        "usersDB": {}
       },
       "api": {
         "questionsApi": {}
