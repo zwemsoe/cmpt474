@@ -11,7 +11,7 @@ const Header = () => {
           <a href="/" style={linkStyle}>
             Home
           </a>
-          <a href="/questions" style={linkStyle}>
+          <a href="/topic" style={linkStyle}>
             Questions
           </a>
           <a href="/contribute" style={linkStyle}>

@@ -1,0 +1,12 @@
+{
+  "resourceName": "topicsTable",
+  "tableName": "topicsTable",
+  "partitionKey": {
+    "fieldName": "topicsId",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": [
+    "topicsTableTrigger3a854fee"
+  ]
+}

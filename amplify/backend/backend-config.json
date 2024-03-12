@@ -9,6 +9,14 @@
           ],
           "category": "function",
           "resourceName": "questionsLambda"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "topicLambda"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -110,6 +118,41 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "topicLambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "topicsTable"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "topicsTableTrigger3a854fee": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "topicsTable"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
@@ -160,6 +203,38 @@
           "resourceName": "usersLambda"
         }
       ]
+    },
+    "AMPLIFY_function_topicLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "topicLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_topicLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "topicLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_topicsTableTrigger3a854fee_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "topicsTableTrigger3a854fee"
+        }
+      ]
+    },
+    "AMPLIFY_function_topicsTableTrigger3a854fee_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "topicsTableTrigger3a854fee"
+        }
+      ]
     }
   },
   "storage": {
@@ -168,6 +243,10 @@
       "service": "DynamoDB"
     },
     "usersDB": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "topicsTable": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     }
