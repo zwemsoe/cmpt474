@@ -8,16 +8,16 @@ const Header = () => {
       </div>
       <div style={middleContainer}>
         <nav style={navStyle}>
-          <a href="/" style={linkStyle}>
+          <a href='/' style={linkStyle}>
             Home
           </a>
-          <a href="/topic" style={linkStyle}>
+          <a href='/questions' style={linkStyle}>
             Questions
           </a>
-          <a href="/contribute" style={linkStyle}>
+          <a href='/contribute' style={linkStyle}>
             Contribute
           </a>
-          <a href="/users" style={linkStyle}>
+          <a href='/users' style={linkStyle}>
             User Management
           </a>
         </nav>

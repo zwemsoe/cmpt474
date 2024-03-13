@@ -21,7 +21,7 @@ const QuestionsPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       try {
         const restOperation = get({
           apiName: "questionsApi",
@@ -29,16 +29,17 @@ const QuestionsPage = () => {
         });
         const { body } = await restOperation.response;
         const response = await body.json();
-        console.log(topicName);
-        setQuestions(response.filter(item => item['topic'] === topicName));
+
+        setQuestions(response.filter((item) => item["topic"] === topicName));
         setLoading(false);
       } catch (error) {
         console.error(error);
         setLoading(false);
       }
-    }
-    if(topicName)
+    };
+    if (topicName) {
       fetchData();
+    }
   }, [topicName]);
 
   return (
