@@ -3,9 +3,9 @@ import {
   Button,
   Card,
   Flex,
+  Grid,
   Heading,
   Loader,
-  Text,
   View,
 } from "@aws-amplify/ui-react";
 import Header from "./Header";
@@ -35,7 +35,7 @@ const QuestionsPage = () => {
       }
     }
     fetchData();
-  });
+  }, []);
 
   return (
     <View
@@ -52,7 +52,11 @@ const QuestionsPage = () => {
         <h2>Topics</h2>
         <p>Choose from list of topics</p>
         {loading && <Loader variation='linear' />}
-        <Flex direction='column' gap='1rem'>
+        <Grid
+          templateColumns='1fr 1fr 1fr'
+          templateRows='10rem 10rem'
+          gap='1rem'
+        >
           {topics.map(({ topicId, topicName }) => {
             return (
               <Card key={topicId} variation='elevated'>
@@ -65,7 +69,7 @@ const QuestionsPage = () => {
               </Card>
             );
           })}
-        </Flex>
+        </Grid>
       </div>
       <Footer />
     </View>

@@ -8,17 +8,17 @@ import Users from "./Users";
 import Header from "./Header";
 import Footer from "./Footer";
 import QuestionPage from "./QuestionPage";
-import Topic from "./Topic"
+import Topic from "./Topic";
 
 function App({ signOut }) {
   return (
     <Router>
       <Routes>
         <Route
-          path="/"
+          path='/'
           element={
             <View
-              className="App"
+              className='App'
               style={{
                 minHeight: "100vh",
                 paddingBottom: "50px",
@@ -32,11 +32,11 @@ function App({ signOut }) {
             </View>
           }
         />
-        <Route path="/contribute" element={<ContributePage />} />
-        <Route path="/questions/:topicName" element={<QuestionsPage />} />
-        <Route path="/question/:questionId" element={<QuestionPage />} />
-        <Route path="/users" element={<Users />} />
-        <Route path='/topic' element={<Topic/>} />
+        <Route path='/contribute' element={<ContributePage />} />
+        <Route path='/questions' element={<Topic />} />
+        <Route path='/questions/:topicName' element={<QuestionsPage />} />
+        <Route path='/question/:questionId' element={<QuestionPage />} />
+        <Route path='/users' element={<Users />} />
       </Routes>
     </Router>
   );

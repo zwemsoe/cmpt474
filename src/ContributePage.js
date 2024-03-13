@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import {
   Button,
@@ -22,9 +22,29 @@ const ContributePage = () => {
   const [selectedTag, setSelectedTag] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [options, setOptions] = useState(["Choose a topic"]);
+  const [options, setOptions] = useState([]);
   const [isTextFieldVisible, setTextFieldVisible] = useState(false);
-  const [textValue, setTextValue] = useState("");
+  const [topicInput, setTopicInput] = useState("");
+
+  const getTopics = async () => {
+    try {
+      const restOperation = get({
+        apiName: "questionsApi",
+        path: "/topics",
+      });
+      const { body } = await restOperation.response;
+      const response = await body.json();
+      setOptions(response.map((item) => item.topicName));
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getTopics();
+  }, []);
 
   const handleToggle = () => {
     setToggled(!toggled);
@@ -34,54 +54,36 @@ const ContributePage = () => {
     setTextFieldVisible(!isTextFieldVisible);
   };
 
-  const saveText = (text) => {
-    // Save the text here
-    saveTopic(text);
-    console.log("Text saved:", text);
-    setTextFieldVisible(false);
-  };
-
-  async function getTopics() {
-    try {
-      const restOperation = get({
-        apiName: "questionsApi",
-        path: "/topics",
-      });
-      const { body } = await restOperation.response;
-      const result = [];
-      const response = await body.json();
-      response.forEach(element => {
-        result.push(element['topicName']);
-      });
-      setOptions(result);
-      setLoading(false);
-    } catch (error) {
-      console.error(error);
-      setLoading(false);
-    }
-  }
-  getTopics();
-  const saveTopic = async (text) => {
-    try {
-      const restOperation = post({
-        apiName: "questionsApi",
-        path: "/topics",
-        options: {
-          body: {
-            topicsId: crypto.randomUUID(),
-            topicName: text,
+  const saveTopic = async () => {
+    if (topicInput) {
+      try {
+        setLoading(true);
+        const restOperation = post({
+          apiName: "questionsApi",
+          path: "/topics",
+          options: {
+            body: {
+              topicsId: crypto.randomUUID(),
+              topicName: topicInput,
+            },
           },
-        },
-      });
-      const { body } = await restOperation.response;
-      await body.json();
-    } catch (error) {
-      console.error(error);
+        });
+        const { body } = await restOperation.response;
+        await body.json();
+        await getTopics();
+      } catch (error) {
+        console.error(error);
+      }
+      setLoading(false);
+      setSelectedTag(topicInput);
+      setTextFieldVisible(false);
+      setTopicInput("");
     }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     setLoading(true);
     try {
       const restOperation = post({
@@ -93,7 +95,7 @@ const ContributePage = () => {
             title: questionTitle,
             question: questionContent,
             answer: toggled,
-            topic: selectedTag
+            topic: selectedTag,
           },
         },
       });
@@ -128,6 +130,8 @@ const ContributePage = () => {
           Make sure to provide a clear title and description for each question.
           Your contributions are greatly appreciated!
         </p>
+
+        {loading && <Loader variation='linear' />}
         <form onSubmit={handleSubmit}>
           <Flex direction='column' gap='2rem'>
             <TextField
@@ -145,30 +149,35 @@ const ContributePage = () => {
               onChange={(event) => setSelectedTag(event.target.value)}
               options={options}
               value={selectedTag}
-            >
-            </SelectField>
-            <form>
-              <Flex>
-                <Button
-                  onClick={toggleTextFieldVisibility}
-                  variation='primary'
-                  style={{ marginBottom: "30px" }}
-                >
-                  Create topics
-                </Button>
-                {isTextFieldVisible &&
-                  <> 
-                  <input
-                  type="text"
-                  value={textValue}
-                  onChange={(e) => setTextValue(e.target.value)}
+              placeholder='Choose a topic'
+              required
+            />
+
+            <Flex direction='column' style={{ marginBottom: "30px" }}>
+              <Button onClick={toggleTextFieldVisibility} variation='primary'>
+                Create new topic
+              </Button>
+              {isTextFieldVisible && (
+                <div>
+                  <TextField
+                    name='topic'
+                    placeholder='React, AWS, etc.'
+                    label='New topic'
+                    labelHidden
+                    required
+                    value={topicInput}
+                    onChange={(event) => setTopicInput(event.target.value)}
                   />
-                  <button onClick={() => saveText(textValue)}>Save</button>
-                  <button onClick={() => setTextValue("")}>Clear</button>
-                  </>
-                }
-              </Flex>
-            </form>
+                  <div style={{ marginTop: "10px" }}>
+                    <Button onClick={saveTopic} style={{ marginRight: "10px" }}>
+                      Save
+                    </Button>
+                    <Button onClick={() => setTopicInput("")}>Clear</Button>
+                  </div>
+                </div>
+              )}
+            </Flex>
+
             <div
               style={{
                 border: "1px solid #ccc",
@@ -183,7 +192,6 @@ const ContributePage = () => {
                 labelHidden
                 variation='quiet'
                 required
-                multiline
                 rows={6}
                 style={{
                   width: "100%",
@@ -206,7 +214,7 @@ const ContributePage = () => {
               />
               <p>{toggled ? "True" : "False"}</p>
             </div>
-            {loading && <Loader variation='linear' />}
+
             {submitted && (
               <Alert variation='success' isDismissible={true} hasIcon={true}>
                 Successfully submitted
