@@ -149,22 +149,6 @@
     }
   },
   "parameters": {
-    "AMPLIFY_function_cmpt47469df6069PostConfirmation_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "cmpt47469df6069PostConfirmation"
-        }
-      ]
-    },
-    "AMPLIFY_function_cmpt47469df6069PostConfirmation_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "cmpt47469df6069PostConfirmation"
-        }
-      ]
-    },
     "AMPLIFY_function_questionsLambda_deploymentBucketName": {
       "usedBy": [
         {
