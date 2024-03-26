@@ -9,6 +9,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import QuestionPage from "./QuestionPage";
 import Topic from "./Topic";
+import UserPage from "./UserPage";
 
 function App({ signOut }) {
   return (
@@ -37,6 +38,7 @@ function App({ signOut }) {
         <Route path='/questions/:topicName' element={<QuestionsPage />} />
         <Route path='/question/:questionId' element={<QuestionPage />} />
         <Route path='/users' element={<Users />} />
+        <Route path='/user' element={<UserPage />} />
       </Routes>
     </Router>
   );
