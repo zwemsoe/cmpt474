@@ -12,10 +12,9 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "auth": {
-    "cmpt47469df6069": {
+    "cmpt474": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
-      "CreatedSNSRole": "string",
       "IdentityPoolId": "string",
       "IdentityPoolName": "string",
       "UserPoolArn": "string",

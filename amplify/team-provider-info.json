@@ -64,9 +64,6 @@
       "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-amplify2ee84313dfd74-staging-35808-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
-      "auth": {
-        "cmpt47469df6069": {}
-      },
       "function": {
         "questionsLambda": {
           "deploymentBucketName": "amplify-amplify2ee84313dfd74-staging-35808-deployment",
@@ -95,7 +92,11 @@
         "usersDB": {}
       },
       "api": {
-        "questionsApi": {}
+        "questionsApi": {},
+        "usersApi": {}
+      },
+      "auth": {
+        "cmpt474": {}
       }
     }
   },
