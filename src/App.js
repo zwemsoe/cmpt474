@@ -16,10 +16,10 @@ function App({ signOut }) {
     <Router>
       <Routes>
         <Route
-          path='/'
+          path="/"
           element={
             <View
-              className='App'
+              className="App"
               style={{
                 minHeight: "100vh",
                 paddingBottom: "50px",
@@ -33,12 +33,12 @@ function App({ signOut }) {
             </View>
           }
         />
-        <Route path='/contribute' element={<ContributePage />} />
-        <Route path='/questions' element={<Topic />} />
-        <Route path='/questions/:topicName' element={<QuestionsPage />} />
-        <Route path='/question/:questionId' element={<QuestionPage />} />
-        <Route path='/users' element={<Users />} />
-        <Route path='/user' element={<UserPage />} />
+        <Route path="/contribute" element={<ContributePage />} />
+        <Route path="/questions" element={<Topic />} />
+        <Route path="/questions/:topicName" element={<QuestionsPage />} />
+        <Route path="/question/:questionId" element={<QuestionPage />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/user" element={<UserPage />} />
       </Routes>
     </Router>
   );
