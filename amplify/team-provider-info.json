@@ -14,8 +14,7 @@
     },
     "categories": {
       "auth": {
-        "cmpt474": {},
-        "cmpt47469df6069": {}
+        "cmpt474": {}
       },
       "function": {
         "questionsLambda": {
@@ -65,13 +64,9 @@
     },
     "categories": {
       "auth": {
-        "cmpt47469df6069": {}
+        "cmpt474": {}
       },
       "function": {
-        "cmpt47469df6069PostConfirmation": {
-          "deploymentBucketName": "amplify-cmpt474-devcentral-221509-deployment",
-          "s3Key": "amplify-builds/cmpt47469df6069PostConfirmation-2b584c3639662b766558-build.zip"
-        },
         "questionsLambda": {
           "deploymentBucketName": "amplify-cmpt474-devcentral-221509-deployment",
           "s3Key": "amplify-builds/questionsLambda-4a6d70736b386d584b4a-build.zip"
@@ -106,7 +101,6 @@
   "dev": {
     "categories": {
       "function": {
-        "cmpt47469df6069PostConfirmation": {},
         "questionsLambda": {},
         "topicLambda": {},
         "topicsTableTrigger3a854fee": {},
