@@ -40,7 +40,17 @@
   "auth": {
     "cmpt474": {
       "customAuth": false,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "cmpt474PostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
       "frontendAuthConfig": {
         "mfaConfiguration": "ON",
         "mfaTypes": [
@@ -69,6 +79,11 @@
     }
   },
   "function": {
+    "cmpt474PostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "questionsLambda": {
       "build": true,
       "dependsOn": [
