@@ -24,7 +24,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
-    "cmpt47469df6069PostConfirmation": {
+    "cmpt474PostConfirmation": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",

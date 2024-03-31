@@ -34,12 +34,19 @@
           "deploymentBucketName": "amplify-cmpt474-main-53518-deployment",
           "s3Key": "amplify-builds/usersLambda-325a58562b4533766552-build.zip"
         },
-        "cmpt474PostConfirmation": {}
+        "cmpt474PostConfirmation": {
+          "deploymentBucketName": "amplify-cmpt474-main-53518-deployment",
+          "s3Key": "amplify-builds/cmpt474PostConfirmation-4d7431414d79316c6d6b-build.zip"
+        }
       },
       "storage": {
         "questionsDB": {},
         "topicsTable": {},
         "usersDB": {}
+      },
+      "api": {
+        "questionsApi": {},
+        "usersApi": {}
       }
     }
   },

@@ -159,6 +159,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_cmpt474PostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "cmpt474PostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_cmpt474PostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "cmpt474PostConfirmation"
+        }
+      ]
+    },
     "AMPLIFY_function_questionsLambda_deploymentBucketName": {
       "usedBy": [
         {
