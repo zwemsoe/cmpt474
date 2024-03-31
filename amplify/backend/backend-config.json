@@ -69,11 +69,6 @@
     }
   },
   "function": {
-    "cmpt47469df6069PostConfirmation": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "questionsLambda": {
       "build": true,
       "dependsOn": [

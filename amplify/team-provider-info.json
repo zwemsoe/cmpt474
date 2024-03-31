@@ -33,8 +33,7 @@
         "usersLambda": {
           "deploymentBucketName": "amplify-cmpt474-main-53518-deployment",
           "s3Key": "amplify-builds/usersLambda-325a58562b4533766552-build.zip"
-        },
-        "cmpt47469df6069PostConfirmation": {}
+        }
       },
       "storage": {
         "questionsDB": {},
